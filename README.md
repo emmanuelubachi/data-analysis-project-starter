@@ -1,2 +1,2 @@
-# da-project-blueprint
-A template for data analytics projects
+# da-project-starter
+A starter template for data analytics projects
