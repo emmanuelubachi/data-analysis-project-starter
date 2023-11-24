@@ -13,7 +13,9 @@ This [starter template](https://github.com/emmanuelubach/da-project-starter) aim
 #### From Scratch
 * Click the green `Use this template` button above.
 * Alternatively:
-```degit emmanuelubachi/da-project-starter <my-project>```
+```bash
+degit emmanuelubachi/da-project-starter <my-project>
+```
 
 #### Pre-existing Project
 * clone the repo
