@@ -1,64 +1,95 @@
-# Data Workflow Process
+# 📁 Data Directory Structure
 
-This document outlines the standard data workflow process from the "Raw" data folder to the "Final" data folder, including the "Processed" data folder. This process ensures that data is properly cleaned, transformed, and prepared for analysis.
+This folder contains all datasets used throughout the data analysis project, organized according to their processing stage.  
+Each subfolder serves a specific purpose — ensuring clarity, reproducibility, and efficient data handling.
 
-## 1. Raw Data
+---
 
-- **Folder:** Raw
-- **Purpose:** The "Raw" folder contains the original, untouched data as received from external sources or collected internally. This data serves as the source of truth.
+## **Folder Overview**
 
-## 2. Data Ingestion
+### **`source/`**
 
-- **Task:** Move data from the "Raw" folder to the "Staging" folder for initial data ingestion and preparation.
-- **Folder:** Staging
-- **Purpose:** The "Staging" folder is used to prepare data for further processing.
+Stores original and reference data inputs.
 
-## 3. Data Cleaning and Transformation
+- **`raw/`** — Unmodified datasets directly collected from sources (e.g., CSVs, databases, APIs, web scrapes).  
+  _➡ Do not edit these files manually._
 
-- **Task:** Perform data cleaning, including handling missing values, outliers, and data type conversions.
-- **Folder:** Staging
-- **Purpose:** Prepare data in the "Staging" folder for analysis by ensuring it is accurate and consistent.
+- **`external/`** — Third-party or external datasets (e.g., open data, partner data, public APIs).  
+  _➡ Keep original structure and include citation/source info._
 
-## 4. Data Exploration
+- **`lookup/`** — Reference and mapping tables (e.g., country codes, category mappings, metadata files).  
+  _➡ Use for joins, standardization, or enrichment._
 
-- **Task:** Explore the data in the "Staging" folder to understand its characteristics and identify potential insights.
-- **Folder:** Staging
-- **Purpose:** Gain insights into the data, which will inform further data processing steps.
+---
 
-## 5. Intermediate Data Storage
+### **`staging/`**
 
-- **Task:** Move cleaned and explored data from the "Staging" folder to the "Processed" folder.
-- **Folder:** Processed
-- **Purpose:** The "Processed" folder is used to store data that has undergone initial cleaning and exploration.
+Intermediate data storage for preprocessed or merged datasets.  
+Used for testing transformations, schema alignment, or temporary joins before full cleaning.
 
-## 6. Additional Data Transformation
+---
 
-- **Task:** Perform additional data transformations, such as feature engineering or aggregations, on data in the "Processed" folder.
-- **Folder:** Processed
-- **Purpose:** Create datasets in the "Processed" folder that are tailored for specific analysis goals.
+### **`EDA/`**
 
-## 7. Data Quality Assurance
+Data used during **Exploratory Data Analysis (EDA)** — cleaned and profiled versions of source data.
 
-- **Task:** Ensure data quality by conducting thorough quality checks and validation.
-- **Folder:** Processed
-- **Purpose:** Verify that data in the "Processed" folder is accurate and reliable for analysis.
+- **`cleaned/`** — Clean, filtered, and lightly transformed datasets ready for exploration and visualization.
+- **`interim/`** — Temporary analysis outputs, summary tables, or feature exploration data.
 
-## 8. Intermediate Data Storage (Interim)
+---
 
-- **Task:** Move data from the "Processed" folder to the "Interim" folder as needed for specific analysis steps.
-- **Folder:** Interim
-- **Purpose:** The "Interim" folder is used to store intermediate datasets that are essential for specific analysis steps.
+### **`processed/`**
 
-## 9. Final Data Storage
+Fully cleaned and transformed datasets ready for formal analysis, modeling, or feature engineering.  
+_➡ These files represent the most stable and reusable data assets._
 
-- **Task:** Move the final analysis-ready data from the "Interim" folder to the "Final" folder.
-- **Folder:** Final
-- **Purpose:** The "Final" folder contains cleaned and processed data that is ready for analysis, reporting, or sharing with stakeholders.
+---
 
-## 10. Documentation
+### **`final/`**
 
-- **Task:** Document all data processing steps, transformations, and any relevant metadata.
-- **Folder:** docs
-- **Purpose:** Maintain clear documentation to ensure reproducibility and transparency in the data analysis process.
+Final, production-ready datasets used for visualization, dashboards, or reporting.  
+_➡ Serve as the ultimate output of your data pipeline._
 
-This workflow provides a structured approach to preparing data for analysis, ensuring that data is accurate, cleaned, and transformed appropriately before it reaches its final state in the "Final" folder.
+---
+
+### **`validation/`**
+
+Validation and quality control outputs.
+
+- Schema or integrity check results
+- Data profiling reports
+- Duplicates or missing value logs
+
+---
+
+## **Folder Structure**
+
+```bash
+├── data/
+│   ├── validation/                # Temporary data validation or manual checks
+│   ├── EDA/
+│   │   ├── cleaned/               # Cleaned datasets used in exploration
+│   │   ├── interim/               # Intermediate processed data
+│   │   ├── final/                 # Final datasets for reporting or visualization
+│   │   └── processed/             # Processed datasets ready for analysis
+│   ├── source/
+│   │   ├── external/              # External data sources (APIs, public datasets)
+│   │   ├── lookup/                # Reference tables, keys, mappings
+│   │   └── raw/                   # Raw input data (untouched)
+│   └── staging/                   # Temporary workspace for loading or transformations
+
+```
+
+---
+
+## **Best Practices**
+
+1. **Do not overwrite raw data.** Always create new versions in `staging` or `processed`.
+2. **Document all transformations** (e.g., via scripts or notebooks).
+3. **Use consistent naming conventions** (e.g., `snake_case`, include date/version if needed).
+4. **Keep large files out of version control** (use `.gitignore` for raw or interim data).
+5. **Add metadata or data dictionaries** in each folder when applicable.
+
+---
+
+## **Example Data Flow**

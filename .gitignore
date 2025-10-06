@@ -167,3 +167,29 @@ cython_debug/
 # VS Code
 .vscode/
 .vscode
+
+
+
+# # Data files
+#    data/source/raw/*
+#    data/source/external/*
+#    !data/**/.gitkeep
+   
+#    # Outputs
+#    outputs/*
+#    !outputs/.gitkeep
+   
+#    # Logs
+#    logs/*
+#    !logs/.gitkeep
+   
+#    # Config
+#    config/config.yaml
+#    config/credentials.yaml
+   
+#    # Python
+#    __pycache__/
+#    *.pyc
+#    .env
+#    venv/
+#    .ipynb_checkpoints/
