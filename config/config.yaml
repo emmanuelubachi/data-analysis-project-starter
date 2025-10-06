@@ -1,0 +1,13 @@
+paths:
+  raw_data: "data/source/raw/"
+  cleaned_data: "data/EDA/cleaned/"
+  processed_data: "data/EDA/processed/"
+  reports: "docs/"
+
+parameters:
+  sample_size: 10000
+  random_state: 42
+
+visualization:
+  theme: "light"
+  style: "seaborn"
